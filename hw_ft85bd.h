@@ -259,6 +259,7 @@
 #endif
 #ifndef MCCONF_SI_BATTERY_CELLS
 #define MCCONF_SI_BATTERY_CELLS			12
+#endif
 
 #ifndef MCCONF_SI_BATTERY_AH
 #define MCCONF_SI_BATTERY_AH			10.0
