@@ -27,7 +27,7 @@ Do this for both microcontrollers on the board. The same config should be adequa
 
 The FT85BD uses an STM32 knockoff, the AT32F403ARCT7. The AT32F403 has the same pinout as the STM32F405RGT6 that the normal VESCs use. The biggest problem is that the AT32F403 has substantially less flash memory. The VESC binary won’t fit in 256Kb. As far as I know, this leaves two options:
 
-1. **(What I did) Change the MCUs out**. Use a hot air rework station to desolder both AT32F403 from the motor controller, clean the contacts, apply a bit of solder paste, and replace with STM32F405 MCUs. If you’ve never soldered Tsomething that small, I don’t recommend trying it.
+1. **(What I did) Change the MCUs out**. Use a hot air rework station to desolder both AT32F403 from the motor controller, clean the contacts, apply a bit of solder paste, and replace with STM32F405 MCUs. If you’ve never soldered something that small, I don’t recommend trying it.
 2. **(What I ultimately didn’t do)** T**rim the firmware down.** First you should see if you can get the VESC firmware binary small enough. Strip out as many drivers and communication protocols, etc. as you can. I got frustrated and stopped. Assuming you succeed, the AT32F403 can be flashed (via STLINK) by installing the OpenOCD config from the manufacturer: https://github.com/ArteryTek/OpenOCD. You’ll need to figure out file paths, but it’s something like this:
     
     ```jsx
@@ -58,7 +58,7 @@ The FT85BD uses an STM32 knockoff, the AT32F403ARCT7. The AT32F403 has the same 
     
     I can’t guarantee that it will work even if you do all this, but I figured I’d describe my progress in case someone else goes down this road.
     
-3. **(What I ultimately didn’t do)** T**rim the firmware down.** First you should see if you can get the VESC firmware binary small enough. Strip out as many drivers and communication protocols, etc. as you can. I got frustrated and stopped. Assuming you succeed, the AT32F403 can be flashed (via STLINK) by installing the OpenOCD config from the manufacturer: . You’ll need to figure out file paths, but it’s something like this:
+3. **(What I ultimately didn’t do)** T**rim the firmware down.** First you should see if you can get the VESC firmware binary small enough. Strip out as many drivers and communication protocols, etc. as you can. I got frustrated and stopped. Assuming you succeed, the AT32F403 can be flashed (via STLINK) by installing the OpenOCD config from the manufacturer: https://github.com/ArteryTek/openocd. You’ll need to figure out file paths, but it’s something like this:
     
     ```jsx
     artery-openocd -f ~/artery-openocd/tcl/interface/stlink.cfg -f ~/artery-openocd/tcl/target/at32f4xx.cfg
